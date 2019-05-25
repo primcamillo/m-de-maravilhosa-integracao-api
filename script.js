@@ -58,7 +58,7 @@ fetch('http://localhost:5001/maravilhosas/') //API que fizemos
 
 const button = document.querySelector('.button');
 button.addEventListener('click', () => {  //no meio dos parenteses era eventoq1
-    // evento.preventDefault();
+   // evento.preventDefault(); tem q apertar f5 para aparecer a pessoa
 
 
     fetch('http://localhost:5001/maravilhosas/', {
@@ -73,7 +73,9 @@ button.addEventListener('click', () => {  //no meio dos parenteses era eventoq1
         })
     })
         .then((response) => {
+            document.location.reload(true);
             return response.json();
+
         })
         .then((data) => {
         })
@@ -86,26 +88,18 @@ button.addEventListener('click', () => {  //no meio dos parenteses era eventoq1
 const bdeletar = document.querySelector('.deletar');
 bdeletar.addEventListener('click', () => {
 
-    fetch('http://localhost:5001/maravilhosas/', {
+    fetch('http://localhost:5001/maravilhosas/' + mulher.id, {
         method: 'DELETE ',
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            "id": deletar.getAttribute("data-id")
-
-        })
     })
-        .then((response) => {
-            return response.json();
-        })
-        .then(() =>{
+        .then(() => {
             cardPai.removeChild(thisCard)
         })
-
         .catch((erro) => {
             console.log('erro')
         })
-         
+
 })
